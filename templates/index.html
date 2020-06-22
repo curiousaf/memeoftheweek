@@ -60,10 +60,19 @@
               <p class="card-text">{{ meme['title'] }}</p>
              
             </div>
-            {% if meme['external_link'] == None %}
-                <img src="{{ meme['picture'] }}" class="card-img-top" alt="...">
-            {% elif 'gfycat.com' in meme['external_link']  %}
-            <div style='position:relative;padding-bottom:calc(100% / 1.85)'><iframe src="{{ meme['external_link'] }}" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div> 
+            <img src="{{ meme['picture'] }}" class="card-img-top" alt="...">
+            <p>{{ meme['text'] }}</p>
+
+            {% if meme['youtube_id'] != None  %}
+            <!-- {{ meme['reddit_video'] }} -->
+            <iframe width="100%" height="400"
+            src="https://www.youtube.com/embed/{{ meme['youtube_id'] }}">
+            </iframe> 
+            {% elif meme['gfycat_link'] != None  %}
+            <div style='position:relative;padding-bottom:calc(100% / 1.85)'><iframe src="{{ meme['gfycat_link'] }}" frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+            
+            {% elif meme['imgur_link'] != None  %}
+            <iframe src="https://imgur.com/{{ meme['imgur_link'] }}/embed" width="100%" height="400" scrolling="no" style="border:none;"></iframe>
             {% endif %}
         </div>
         </div>

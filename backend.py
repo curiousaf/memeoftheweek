@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    meme_list=get_subreddit(subreddit='interestingasfuck')
+    meme_list=get_subreddit(subreddit='facepalm')
     print(meme_list)
     return render_template('index.html', meme_list=meme_list)
 
